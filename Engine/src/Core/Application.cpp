@@ -1,21 +1,23 @@
-#include <Engine/Application.hpp>
+#include <Engine/Core/Application.hpp>
 #include <iostream>
 
 namespace Engine
 {
     Application::Application()
+        : window(1280, 720, "Test"), renderer(1280, 720, window)
     {
-        running = true;
+
     }
 
     void Application::Run()
     {
         while (running)
         {
+            window.PollEvents();
+            if (window.ShouldClose()) running = false;
+
             time.Update();
-
             float deltaTime = time.DeltaTime();
-
             Update(deltaTime);
 
             Render();
@@ -31,6 +33,6 @@ namespace Engine
 
     void Application::Render()
     {
-        
+        renderer.Render();
     }
 }

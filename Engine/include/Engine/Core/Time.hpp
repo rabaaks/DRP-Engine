@@ -5,8 +5,6 @@ namespace Engine
     class Time
     {
     public:
-        Time();
-
         void Update();
 
         float DeltaTime() const;
