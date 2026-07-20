@@ -4,8 +4,8 @@ target_sources(Engine PRIVATE
     src/Core/Application.cpp
     src/Core/Time.cpp
 
-    src/Renderer/Framebuffer.cpp
-    src/Renderer/SoftwareRenderer.cpp
+    src/Graphics/Framebuffer.cpp
+    src/Graphics/SoftwareRenderer.cpp
 
     src/Window/SDLWindow.cpp
 )
@@ -13,7 +13,8 @@ target_sources(Engine PRIVATE
 target_include_directories(Engine PUBLIC
     include
     include/Core
-    include/Renderer
+    include/Graphics
+    include/Math
     include/Window
 )
 

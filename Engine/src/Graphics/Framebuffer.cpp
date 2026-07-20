@@ -1,4 +1,4 @@
-#include <Engine/Renderer/Framebuffer.hpp>
+#include <Engine/Graphics/Framebuffer.hpp>
 
 namespace Engine
 {

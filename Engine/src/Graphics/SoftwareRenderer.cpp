@@ -1,4 +1,4 @@
-#include <Engine/Renderer/SoftwareRenderer.hpp>
+#include <Engine/Graphics/SoftwareRenderer.hpp>
 #include <cmath>
 
 namespace Engine
@@ -9,7 +9,17 @@ namespace Engine
 
     }
 
-    void SoftwareRenderer::Render()
+    void SoftwareRenderer::BeginFrame(Camera camera)
+    {
+
+    }
+
+    void SoftwareRenderer::DrawMesh(Mesh mesh, Transform<3> transform, Material material)
+    {
+
+    }
+
+    void SoftwareRenderer::ShowFrame()
     {
         uint32_t* pixels = framebuffer.Data();
 
@@ -19,6 +29,6 @@ namespace Engine
             pixels[i] = (0xFF << 24) | ((uint8_t) (sin(distance * 0.05f) * 127 + 128) << 16) | ((uint8_t) (sin(distance * 0.05f + 2.09f) * 127 + 128) << 8) | ((uint8_t) (sin(distance * 0.05f + 4.19f) * 127 + 128) << 0); 
         }
 
-        window.Present(framebuffer);
+        window.Display(framebuffer);
     }
 }

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Engine/Core/Time.hpp>
-#include <Engine/Renderer/SoftwareRenderer.hpp>
+#include <Engine/Graphics/SoftwareRenderer.hpp>
 #include <Engine/Window/SDLWindow.hpp>
 
 namespace Engine

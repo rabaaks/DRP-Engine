@@ -45,7 +45,7 @@ namespace Engine
         return closed;
     }
 
-    void SDLWindow::Present(const Framebuffer& buffer) const
+    void SDLWindow::Display(const Framebuffer& buffer) const
     {
         SDL_UpdateTexture
         (

@@ -14,7 +14,7 @@ namespace Engine
 
         void PollEvents() override;
         bool ShouldClose() const override;
-        void Present(const Framebuffer& framebuffer) const override;
+        void Display(const Framebuffer& framebuffer) const override;
 
     private:
         SDL_Window* window;

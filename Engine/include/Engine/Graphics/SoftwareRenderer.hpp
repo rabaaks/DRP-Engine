@@ -1,7 +1,7 @@
 #pragma once
 
-#include <Engine/Renderer/Framebuffer.hpp>
-#include <Engine/Renderer/Renderer.hpp>
+#include <Engine/Graphics/Framebuffer.hpp>
+#include <Engine/Graphics/Renderer.hpp>
 #include <Engine/Window/Window.hpp>
 
 namespace Engine
@@ -11,7 +11,9 @@ namespace Engine
     public:
         SoftwareRenderer(int width, int height, const Window& window);
 
-        void Render() override;
+        void BeginFrame(Camera camera) override;
+        void DrawMesh(Mesh mesh, Transform<3> transform, Material material) override;
+        void ShowFrame() override;
     
     private:
         int width;

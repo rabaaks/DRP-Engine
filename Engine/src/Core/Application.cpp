@@ -33,6 +33,6 @@ namespace Engine
 
     void Application::Render()
     {
-        renderer.Render();
+        renderer.ShowFrame();
     }
 }
