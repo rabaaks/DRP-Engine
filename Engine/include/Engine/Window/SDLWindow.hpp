@@ -1,7 +1,10 @@
 #pragma once
 
+#include <Engine/Graphics/Image.hpp>
 #include <Engine/Window/Window.hpp>
+
 #include <SDL3/SDL.h>
+
 #include <cstdint>
 
 namespace Engine
@@ -14,7 +17,7 @@ namespace Engine
 
         void PollEvents() override;
         bool ShouldClose() const override;
-        void Display(const Framebuffer& framebuffer) const override;
+        void Display(const Image& image) const;
 
     private:
         SDL_Window* window;

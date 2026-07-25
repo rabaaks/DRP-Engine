@@ -4,8 +4,9 @@ target_sources(Engine PRIVATE
     src/Core/Application.cpp
     src/Core/Time.cpp
 
-    src/Graphics/Framebuffer.cpp
+    src/Graphics/Image.cpp
     src/Graphics/SoftwareRenderer.cpp
+    src/Graphics/SoftwareTexture.cpp
 
     src/Window/SDLWindow.cpp
 )

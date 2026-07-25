@@ -1,10 +1,12 @@
 #include <Engine/Core/Application.hpp>
+#include <Engine/Graphics/Image.hpp>
+
 #include <iostream>
 
 namespace Engine
 {
     Application::Application()
-        : window(1280, 720, "Test"), renderer(1280, 720, window)
+        : window(1280, 720, "Test"), renderer(Image(1280, 720), window)
     {
 
     }

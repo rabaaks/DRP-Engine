@@ -45,13 +45,13 @@ namespace Engine
         return closed;
     }
 
-    void SDLWindow::Display(const Framebuffer& buffer) const
+    void SDLWindow::Display(const Image& image) const
     {
         SDL_UpdateTexture
         (
             texture,
             nullptr,
-            buffer.Data(),
+            &image.Data().value,
             width * sizeof(uint32_t)
         );
         SDL_RenderTexture

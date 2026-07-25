@@ -1,8 +1,10 @@
 #pragma once
 
+#include <cstddef>
+
 namespace Engine
 {
-    template <size_t N>
+    template <std::size_t N>
     struct Vector
     {
         float data[N];

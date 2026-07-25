@@ -3,7 +3,7 @@
 #include <Engine/Graphics/Camera.hpp>
 #include <Engine/Graphics/Material.hpp>
 #include <Engine/Graphics/Mesh.hpp>
-#include <Engine/Math/Transform.hpp>
+#include <Engine/Graphics/Transform.hpp>
 
 namespace Engine
 {
@@ -12,8 +12,8 @@ namespace Engine
     public:
         virtual ~Renderer() = default;
 
-        virtual void BeginFrame(Camera camera) = 0;
-        virtual void DrawMesh(Mesh mesh, Transform<3> transform, Material material) = 0;
+        virtual void BeginFrame(const Camera& camera) = 0;
+        virtual void DrawMesh(Mesh mesh, Transform transform, Material material) = 0;
         virtual void ShowFrame() = 0;
     };
 }
