@@ -7,8 +7,6 @@ target_sources(Engine PRIVATE
     Graphics/SoftwareRenderer.cpp
     Graphics/SoftwareTexture.cpp
 
-    Math/Vector.cpp
-
     Window/SDLWindow.cpp
 )
 

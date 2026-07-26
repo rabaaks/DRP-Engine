@@ -9,6 +9,13 @@ namespace Engine
     template <std::size_t M, std::size_t N = M>
     struct Matrix
     {
-        Vector<N> rows[M];
+        Vector<N> data[M];
+
+        Vector<N>& operator[](std::size_t index);
+
+        template <std::size_t P>
+        Matrix<M, P> operator*(const Matrix<N, P>& other) const;
     };
 }
+
+#include <Engine/Math/Matrix.ipp>

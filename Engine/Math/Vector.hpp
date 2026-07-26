@@ -48,6 +48,8 @@ namespace Engine
 
         Vector Cross(const Vector& other) const requires (N == 3);
 
+        float& operator[](std::size_t index);
+
         Vector operator+(const Vector& other) const;
         Vector operator-(const Vector& other) const;
         Vector operator*(float scalar) const;
@@ -55,3 +57,4 @@ namespace Engine
     };
 }
 
+#include <Engine/Math/Vector.ipp>

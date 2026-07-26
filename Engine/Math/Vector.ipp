@@ -24,12 +24,18 @@ namespace Engine
     }
 
     template <std::size_t N>
+    float& Vector<N>::operator[](std::size_t index)
+    {
+        return this->data[index];
+    }
+
+    template <std::size_t N>
     Vector<N> Vector<N>::operator+(const Vector<N>& other) const
     {
         Vector<N> result;
         for (std::size_t i{}; i < N; i++)
         {
-            result.data[i] = this->data[i] + other.data[i];
+            result[i] = *this[i] + other[i];
         }
         return result;
     }
@@ -40,7 +46,7 @@ namespace Engine
         Vector<N> result;
         for (std::size_t i{}; i < N; i++)
         {
-            result.data[i] = this->data[i] - other.data[i];
+            result[i] = *this[i] - other[i];
         }
         return result;
     }
@@ -51,7 +57,7 @@ namespace Engine
         Vector<N> result;
         for (std::size_t i{}; i < N; i++)
         {
-            result.data[i] = this->data[i] * scalar;
+            result[i] = *this[i] * scalar;
         }
         return result;
     }
@@ -62,11 +68,8 @@ namespace Engine
         Vector<N> result;
         for (std::size_t i{}; i < N; i++)
         {
-            result.data[i] = this->data[i] / scalar;
+            result[i] = *this[i] / scalar;
         }
         return result;
     }
-
-    template struct Vector<3>;
-    template struct Vector<4>;
 }
