@@ -20,6 +20,9 @@ namespace Engine
                 image.GetPixel(x, y).value = 0;
             }
         }
+
+        viewMatrix = camera.GetViewMatrix();
+        projectionMatrix = camera.GetProjectionMatrix();
     }
 
     void SoftwareRenderer::DrawMesh(Mesh mesh, Transform transform, Material material)
@@ -34,7 +37,7 @@ namespace Engine
         int width = image.GetWidth();
         int height = image.GetHeight();
 
-        for (int i{}; i < width * height; i++) {
+        for (int i{}; i < width * height; ++i) {
             int distance = std::sqrt(std::pow(i % width, 2) + std::pow(i / width, 2));
             distance %= 100;
             pixels[i] = (0xFF << 24) | ((uint8_t) (sin(distance * 0.05f) * 127 + 128) << 16) | ((uint8_t) (sin(distance * 0.05f + 2.09f) * 127 + 128) << 8) | ((uint8_t) (sin(distance * 0.05f + 4.19f) * 127 + 128) << 0); 

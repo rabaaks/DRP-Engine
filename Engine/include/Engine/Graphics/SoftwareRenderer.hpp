@@ -19,6 +19,8 @@ namespace Engine
         Image image;
 
         const SDLWindow& window;
-        const Camera& camera;
+
+        Matrix<4> viewMatrix;
+        Matrix<4> projectionMatrix;
     };
 }

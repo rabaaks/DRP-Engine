@@ -5,13 +5,13 @@
 namespace Engine
 {
     template <std::size_t N>
-    struct Vector
+    struct VectorBase
     {
         float data[N];
     };
 
     template <>
-    struct Vector<2>
+    struct VectorBase<2>
     {
         union
         {
@@ -21,7 +21,7 @@ namespace Engine
     };
 
     template <>
-    struct Vector<3>
+    struct VectorBase<3>
     {
         union
         {
@@ -31,7 +31,7 @@ namespace Engine
     };
 
     template <>
-    struct Vector<4>
+    struct VectorBase<4>
     {
         union
         {
@@ -39,4 +39,22 @@ namespace Engine
             float data[4];
         };
     };
+
+    template <std::size_t N>
+    struct Vector : public VectorBase<N>
+    {
+
+        float Dot(const Vector& other) const;
+
+        Vector Cross(const Vector& other) const requires (N == 3);
+
+        Vector operator+(const Vector& other) const;
+        Vector operator-(const Vector& other) const;
+
+        Vector operator*(float scalar) const;
+        Vector operator*(const Matrix) const;
+
+        Vector operator/(float scalar) const;
+    };
 }
+
