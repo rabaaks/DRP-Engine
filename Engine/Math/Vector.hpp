@@ -50,10 +50,7 @@ namespace Engine
 
         Vector operator+(const Vector& other) const;
         Vector operator-(const Vector& other) const;
-
         Vector operator*(float scalar) const;
-        Vector operator*(const Matrix) const;
-
         Vector operator/(float scalar) const;
     };
 }

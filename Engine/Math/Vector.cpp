@@ -29,7 +29,7 @@ namespace Engine
         Vector<N> result;
         for (std::size_t i{}; i < N; i++)
         {
-            result[i] = this->data[i] + other.data[i];
+            result.data[i] = this->data[i] + other.data[i];
         }
         return result;
     }
@@ -40,7 +40,7 @@ namespace Engine
         Vector<N> result;
         for (std::size_t i{}; i < N; i++)
         {
-            result[i] = this->data[i] - other.data[i];
+            result.data[i] = this->data[i] - other.data[i];
         }
         return result;
     }
@@ -51,7 +51,7 @@ namespace Engine
         Vector<N> result;
         for (std::size_t i{}; i < N; i++)
         {
-            result[i] = this->data[i] * scalar;
+            result.data[i] = this->data[i] * scalar;
         }
         return result;
     }
@@ -62,8 +62,11 @@ namespace Engine
         Vector<N> result;
         for (std::size_t i{}; i < N; i++)
         {
-            result[i] = this->data[i] / scalar;
+            result.data[i] = this->data[i] / scalar;
         }
         return result;
     }
+
+    template struct Vector<3>;
+    template struct Vector<4>;
 }
