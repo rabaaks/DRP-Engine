@@ -1,11 +1,13 @@
 #pragma once
 
-#include <Engine/Math/Vector.hpp>
+#include <Engine/Graphics/Triangle.hpp>
+
+#include <vector>
 
 namespace Engine
 {
-    class Mesh
+    struct Mesh
     {
-
+        std::vector<Triangle> triangles;
     };
 }
