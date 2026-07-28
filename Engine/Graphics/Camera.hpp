@@ -7,18 +7,13 @@
 
 namespace Engine
 {
-    class Camera
+    struct Camera
     {
-    public:
-        Camera(Transform transform, float fieldOfView, float aspectRatio);
-
-        Matrix<4> GetViewMatrix() const;
-        Matrix<4> GetProjectionMatrix() const;
-
-    private:
         Transform transform;
 
         float fieldOfView;
         float aspectRatio;
+
+        float nearPlane;
     };
 }

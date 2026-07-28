@@ -1,7 +1,14 @@
 #pragma once
 
+#include <Engine/Graphics/Camera.hpp>
 #include <Engine/Graphics/Image.hpp>
+#include <Engine/Graphics/Material.hpp>
+#include <Engine/Graphics/Mesh.hpp>
 #include <Engine/Graphics/Renderer.hpp>
+#include <Engine/Graphics/Transform.hpp>
+
+#include <Engine/Math/Matrix.hpp>
+
 #include <Engine/Window/SDLWindow.hpp>
 
 namespace Engine
@@ -20,7 +27,6 @@ namespace Engine
 
         const SDLWindow& window;
 
-        Matrix<4> viewMatrix;
-        Matrix<4> projectionMatrix;
+        Camera camera;
     };
 }
