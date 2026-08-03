@@ -19,7 +19,7 @@ namespace Engine
         SoftwareRenderer(Image image, const SDLWindow& window);
 
         void BeginFrame(const Camera& camera) override;
-        void DrawMesh(Mesh mesh, Transform transform, Material material) override;
+        void DrawMesh(Mesh mesh, Transform transform) override;
         void ShowFrame() override;
     
     private:

@@ -5,6 +5,7 @@
 #include <Engine/Math/Vector.hpp>
 
 #include <cmath>
+#include <cstddef>
 #include <utility>
 
 namespace Engine
@@ -28,10 +29,10 @@ namespace Engine
         this->camera = camera;
     }
 
-    void SoftwareRenderer::DrawMesh(Mesh mesh, Transform transform, Material material)
+    void SoftwareRenderer::DrawMesh(Mesh mesh, Transform transform)
     {
         float angleOfViewHorizontal = camera.fieldOfView * M_PI / 180;
-        float angleofViewVertical = camera.fieldOfView * M_PI / 180 * image.GetWidth() / image.GetHeight();
+        float angleofViewVertical = atan(tan(camera.fieldOfView / 2) / image.GetWidth() / image.GetHeight());
 
         float right = tan(angleOfViewHorizontal / 2) * camera.nearPlane;
         float top = tan(angleofViewVertical / 2) * camera.nearPlane;
@@ -40,8 +41,9 @@ namespace Engine
 
         for (Triangle triangle : mesh.triangles)
         {
-            for (Vertex vertex : triangle.vertices)
+            for (std::size_t i{}; i < 3; i++)
             {
+                Vertex vertex{mesh.vertices[triangle.indices[i]]};
                 Vector<2> screen
                 {
                     camera.nearPlane * vertex.position.x / -vertex.position.z,
@@ -60,6 +62,8 @@ namespace Engine
                     (1 - ndc.y) / 2 * image.GetHeight(),
                     -vertex.position.z
                 };
+
+                image.GetPixel(static_cast<int>(raster.x), static_cast<int>(raster.y)).value = 0xFFFFFFFF;
             }
         }
     }
@@ -67,15 +71,6 @@ namespace Engine
     void SoftwareRenderer::ShowFrame()
     {
         uint32_t* pixels = &image.Data().value;
-
-        int width = image.GetWidth();
-        int height = image.GetHeight();
-
-        for (int i{}; i < width * height; ++i) {
-            int distance = std::sqrt(std::pow(i % width, 2) + std::pow(i / width, 2));
-            distance %= 100;
-            pixels[i] = (0xFF << 24) | ((uint8_t) (sin(distance * 0.05f) * 127 + 128) << 16) | ((uint8_t) (sin(distance * 0.05f + 2.09f) * 127 + 128) << 8) | ((uint8_t) (sin(distance * 0.05f + 4.19f) * 127 + 128) << 0); 
-        }
 
         window.Display(image);
     }

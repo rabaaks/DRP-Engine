@@ -22,6 +22,14 @@ namespace Engine
             float deltaTime = time.DeltaTime();
             Update(deltaTime);
 
+            Camera camera
+            {
+                {},
+                90.0f,
+                16 / 9.0f,
+                1.0f
+            };
+
             Render();
 
             std::cout << "Frame\n";

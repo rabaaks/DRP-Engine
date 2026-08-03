@@ -9,6 +9,5 @@ namespace Engine
     {
         // Might be null, use pointer to avoid copying texture data
         Texture* texture;
-        Color color;
     };
 }

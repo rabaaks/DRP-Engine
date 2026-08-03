@@ -1,9 +1,9 @@
-#include <Engine/Graphics/Vertex.hpp>
+#pragma once
 
-namespace Engine
+#include <cstddef>
+#include <vector>
+
+struct Triangle
 {
-    struct Triangle
-    {
-        Vertex vertices[3];
-    };
-}
+    std::vector<std::size_t> indices;
+};
