@@ -16,7 +16,7 @@ namespace Engine
     class SoftwareRenderer : public Renderer
     {
     public:
-        SoftwareRenderer(Image image, const SDLWindow& window);
+        SoftwareRenderer(const SDLWindow& window);
 
         void BeginFrame(const Camera& camera) override;
         void DrawMesh(Mesh mesh, Transform transform) override;

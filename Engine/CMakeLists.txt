@@ -1,4 +1,6 @@
 target_sources(Engine PRIVATE
+    Assets/AssetManager.cpp
+
     Core/Time.cpp
 
     Graphics/Image.cpp
@@ -9,3 +11,4 @@ target_sources(Engine PRIVATE
 )
 
 target_link_libraries(Engine PUBLIC SDL3::SDL3)
+target_link_libraries(Engine PUBLIC nlohmann_json::nlohmann_json)

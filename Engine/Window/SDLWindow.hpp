@@ -6,17 +6,22 @@
 #include <SDL3/SDL.h>
 
 #include <cstdint>
+#include <string>
 
 namespace Engine
 {
     class SDLWindow : public Window
     {
     public:
-        SDLWindow(int width, int height, const char* title);
+        SDLWindow(int width, int height, const std::string& title);
         ~SDLWindow();
 
         void PollEvents() override;
         bool ShouldClose() const override;
+
+        int GetWidth() const override;
+        int GetHeight() const override;
+
         void Display(const Image& image) const;
 
     private:

@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+        "name": "Run Example",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${command:cmake.launchTargetPath}",
+        "args": [
+            "examples/Game/project.json"
+        ],
+        "cwd": "${workspaceFolder}"
+        }
+    ]
+}

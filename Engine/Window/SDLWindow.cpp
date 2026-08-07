@@ -1,13 +1,15 @@
 #include <Engine/Window/SDLWindow.hpp>
 
+#include <iostream>
+
 namespace Engine
 {
-    SDLWindow::SDLWindow(int width, int height, const char* title)
+    SDLWindow::SDLWindow(int width, int height, const std::string& title)
         : width(width), height(height)
     {
-        SDL_Init(SDL_INIT_VIDEO);
+        !SDL_Init(SDL_INIT_VIDEO);
 
-        window = SDL_CreateWindow(title, width, height, 0);
+        window = SDL_CreateWindow(title.c_str(), width, height, 0);
         renderer = SDL_CreateRenderer(window, nullptr);
         texture = SDL_CreateTexture
         (
@@ -43,6 +45,16 @@ namespace Engine
     bool SDLWindow::ShouldClose() const
     {
         return closed;
+    }
+
+    int SDLWindow::GetWidth() const
+    {
+        return width;
+    }
+
+    int SDLWindow::GetHeight() const
+    {
+        return height;
     }
 
     void SDLWindow::Display(const Image& image) const

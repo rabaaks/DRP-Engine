@@ -10,8 +10,8 @@
 
 namespace Engine
 {
-    SoftwareRenderer::SoftwareRenderer(Image image, const SDLWindow& window)
-        : image(std::move(image)), window(window)
+    SoftwareRenderer::SoftwareRenderer(const SDLWindow& window)
+        : image{window.GetWidth(), window.GetHeight()}, window{window}
     {
 
     }

@@ -4,6 +4,7 @@
 #include <Engine/Assets/AssetInfo.hpp>
 
 #include <cstdint>
+#include <filesystem>
 #include <fstream>
 #include <string>
 #include <unordered_map>
@@ -13,17 +14,16 @@ namespace Engine
     class AssetManager
     {
     public:
-        AssetManager();
+        AssetManager(std::filesystem::path projectRootPath);
         ~AssetManager();
 
         template <typename T>
         T& GetAssetData(Asset<T> asset);
 
-        template <typename T>
-        void Import(std::string path);
+        void Import(std::filesystem::path path);
     
     private:
-        std::unordered_map<AssetInfo, uint64_t> assets;
+        std::unordered_map<uint64_t, AssetInfo> assets;
         std::fstream configFile;
     };
 }
