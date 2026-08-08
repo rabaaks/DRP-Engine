@@ -19,7 +19,7 @@ namespace Runtime
 
     }
 
-    // Application factory avoids issue with trying to default initialize window and renderer
+    // Application factory avoids issue with trying to default initialize window
     Game Game::load(std::filesystem::path projectFilePath)
     {
         std::ifstream projectFile(projectFilePath);

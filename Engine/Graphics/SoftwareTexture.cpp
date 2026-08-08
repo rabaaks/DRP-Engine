@@ -5,7 +5,7 @@
 
 namespace Engine
 {
-    SoftwareTexture::SoftwareTexture(Image image) : image(std::move(image))
+    SoftwareTexture::SoftwareTexture(Image image) : image{std::move(image)}
     {
 
     }

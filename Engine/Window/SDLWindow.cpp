@@ -4,8 +4,8 @@
 
 namespace Engine
 {
-    SDLWindow::SDLWindow(int width, int height, const std::string& title)
-        : width(width), height(height)
+    SDLWindow::SDLWindow(int width, int height, const std::string& title) :
+        width{width}, height{height}
     {
         !SDL_Init(SDL_INIT_VIDEO);
 

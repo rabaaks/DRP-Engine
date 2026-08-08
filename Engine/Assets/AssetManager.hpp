@@ -6,6 +6,7 @@
 #include <cstdint>
 #include <filesystem>
 #include <fstream>
+#include <functional>
 #include <string>
 #include <unordered_map>
 
@@ -25,6 +26,10 @@ namespace Engine
     private:
         std::unordered_map<uint64_t, AssetInfo> assets;
         std::fstream configFile;
+
+        using FileLoader = std::function<void(std::filesystem::path)>;
+        static const std::unordered_map<std::filesystem::path, FileLoader> fileExtensions;
+        static const std::unordered_map<std::string, AssetType> assetTypes;
     };
 }
 

@@ -1,9 +1,11 @@
 #include <Engine/Graphics/Image.hpp>
 
+#include <cstddef>
+
 namespace Engine
 {
-    Image::Image(int width, int height)
-        : width(width), height(height), pixels(width * height)
+    Image::Image(int width, int height) :
+        width{width}, height{height}, pixels{static_cast<std::size_t>(width * height)}
     {
 
     }
