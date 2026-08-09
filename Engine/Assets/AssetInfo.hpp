@@ -9,6 +9,8 @@ namespace Engine
     struct AssetInfo
     {
         std::filesystem::path path;
+        // Store the source path so that the file can be re-imported later automatically
+        std::filesystem::path sourcePath;
         std::type_index type{typeid(void)};
     };
 }

@@ -30,13 +30,13 @@ namespace Engine
         return pixels[y * width + x];
     }
 
-    Color& Image::Data()
+    Color* Image::Data()
     {
-        return pixels.front();
+        return &pixels.front();
     }
 
-    const Color& Image::Data() const
+    const Color* Image::Data() const
     {
-        return pixels.front();
+        return &pixels.front();
     }
 }

@@ -63,7 +63,7 @@ namespace Engine
         (
             texture,
             nullptr,
-            &image.Data().value,
+            &image.Data()->value,
             width * sizeof(std::uint32_t)
         );
         SDL_RenderTexture

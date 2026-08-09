@@ -7,6 +7,7 @@
 #include <nlohmann/json.hpp>
 
 #include <iostream>
+#include <utility>
 
 namespace Engine
 {
@@ -38,9 +39,35 @@ namespace Engine
             AssetInfo
             {
                 asset["path"].get<std::string>(),
+                asset["sourcePath"].get<std::string>(),
                 assetTypes.at(asset["type"].get<std::string>())
             };
             std::cout << asset["id"] << std::endl << asset["path"] << asset["type"];
         }
+    }
+
+    AssetManager::~AssetManager()
+    {
+        Save();
+    }
+
+    void AssetManager::Save()
+    {
+        nlohmann::json configJson{nlohmann::json::array()};
+        // Structured binding, have to use auto
+        for (auto& [id, info] : assets)
+        {
+            configJson.push_back
+            (
+                {
+                    {"id", id},
+                    {"path", info.path.string()},
+                    {"sourcePath", info.sourcePath.string()},
+                    {"type", assetNames.at(info.type)}
+                }
+            );
+        }
+        configFile.seekp(0);
+        configFile << configJson.dump(4);
     }
 }

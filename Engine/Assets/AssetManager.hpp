@@ -5,6 +5,8 @@
 #include <Engine/Assets/ImageLoader.hpp>
 #include <Engine/Assets/FileLoader.hpp>
 
+#include <nlohmann/json.hpp>
+
 #include <cstdint>
 #include <filesystem>
 #include <fstream>
@@ -20,7 +22,9 @@ namespace Engine
     {
     public:
         AssetManager(std::filesystem::path projectRootPath);
-        ~AssetManager() = default;
+        ~AssetManager();
+
+        void Save();
 
         template <typename T>
         T& GetData(Asset<T> asset);
@@ -29,14 +33,22 @@ namespace Engine
         Asset<T> Import(std::filesystem::path path);
     
     private:
+        std::uint64_t nextId;
         std::unordered_map<std::uint64_t, AssetInfo> assets;
-        std::unordered_map<std::uint64_t, void*> cachedAssets; 
+        std::unordered_map<std::uint64_t, std::shared_ptr<void>> cachedAssets; 
         std::fstream configFile;
 
         ImageLoader imageLoader;
 
-        std::unordered_map<std::filesystem::path, FileLoader&> fileExtensions;
+        std::unordered_map<std::filesystem::path, std::reference_wrapper<FileLoader>> fileExtensions;
         std::unordered_map<std::string, std::type_index> assetTypes;
+        std::unordered_map<std::type_index, std::string> assetNames;
+
+        std::unordered_map<std::type_index, std::function<nlohmann::json(void*)>> serializers;
+        std::unordered_map<std::type_index, std::function<std::shared_ptr<void>(const nlohmann::json&)>> deserializers;
+
+        template <typename T>
+        void AddType(const std::string& name);
     };
 }
 

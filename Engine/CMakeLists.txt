@@ -1,5 +1,6 @@
 target_sources(Engine PRIVATE
     Assets/AssetManager.cpp
+    Assets/ImageLoader.cpp
 
     Core/Time.cpp
 

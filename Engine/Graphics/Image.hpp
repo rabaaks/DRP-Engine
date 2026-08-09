@@ -17,8 +17,8 @@ namespace Engine
         Color& GetPixel(int x, int y);
         const Color& GetPixel(int x, int y) const;
 
-        Color& Data();
-        const Color& Data() const;
+        Color* Data();
+        const Color* Data() const;
 
     private:
         int width;

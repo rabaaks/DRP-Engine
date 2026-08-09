@@ -5,11 +5,8 @@
 namespace Engine
 {
     class ImageLoader : public FileLoader
-{
+    {
     public:
-        void Load(std::filesystem::path path, void* object) override
-        {
-
-        }
-};
+        void Load(std::filesystem::path path, void* object) override;
+    };
 }
