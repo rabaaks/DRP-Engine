@@ -70,7 +70,7 @@ namespace Engine
 
     void SoftwareRenderer::ShowFrame()
     {
-        uint32_t* pixels = &image.Data().value;
+        std::uint32_t* pixels = &image.Data().value;
 
         window.Display(image);
     }

@@ -7,6 +7,6 @@ namespace Engine
     template <typename T>
     struct Asset
     {
-        uint64_t id;
+        std::uint64_t id;
     };
 }

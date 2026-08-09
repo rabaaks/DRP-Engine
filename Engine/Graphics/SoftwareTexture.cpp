@@ -14,8 +14,8 @@ namespace Engine
     {
         return image.GetPixel
         (
-            static_cast<uint32_t>(uv.x * (image.GetWidth() - 1)),
-            static_cast<uint32_t>(uv.y * (image.GetHeight() - 1))
+            static_cast<std::uint32_t>(uv.x * (image.GetWidth() - 1)),
+            static_cast<std::uint32_t>(uv.y * (image.GetHeight() - 1))
         );
     }
 }

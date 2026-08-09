@@ -5,6 +5,8 @@ project(DRPEngine)
 set(CMAKE_CXX_STANDARD 20)
 
 add_subdirectory(vendor/SDL3)
+add_subdirectory(vendor/SDL3_image)
+
 add_subdirectory(vendor/json)
 
 add_library(Engine STATIC)

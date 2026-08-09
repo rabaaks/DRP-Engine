@@ -6,10 +6,10 @@ namespace Engine
 {
     union Color
     {
-        uint32_t value;
+        std::uint32_t value;
         struct
         {
-            uint8_t a, r, g, b;
+            std::uint8_t a, r, g, b;
         };
     };
 }

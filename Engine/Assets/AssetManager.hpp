@@ -2,13 +2,17 @@
 
 #include <Engine/Assets/Asset.hpp>
 #include <Engine/Assets/AssetInfo.hpp>
+#include <Engine/Assets/ImageLoader.hpp>
+#include <Engine/Assets/FileLoader.hpp>
 
 #include <cstdint>
 #include <filesystem>
 #include <fstream>
 #include <functional>
+#include <memory>
 #include <string>
 #include <unordered_map>
+#include <typeindex>
 
 namespace Engine
 {
@@ -16,20 +20,23 @@ namespace Engine
     {
     public:
         AssetManager(std::filesystem::path projectRootPath);
-        ~AssetManager();
+        ~AssetManager() = default;
 
         template <typename T>
-        T& GetAssetData(Asset<T> asset);
+        T& GetData(Asset<T> asset);
 
-        void Import(std::filesystem::path path);
+        template <typename T>
+        Asset<T> Import(std::filesystem::path path);
     
     private:
-        std::unordered_map<uint64_t, AssetInfo> assets;
+        std::unordered_map<std::uint64_t, AssetInfo> assets;
+        std::unordered_map<std::uint64_t, void*> cachedAssets; 
         std::fstream configFile;
 
-        using FileLoader = std::function<void(std::filesystem::path)>;
-        static const std::unordered_map<std::filesystem::path, FileLoader> fileExtensions;
-        static const std::unordered_map<std::string, AssetType> assetTypes;
+        ImageLoader imageLoader;
+
+        std::unordered_map<std::filesystem::path, FileLoader&> fileExtensions;
+        std::unordered_map<std::string, std::type_index> assetTypes;
     };
 }
 

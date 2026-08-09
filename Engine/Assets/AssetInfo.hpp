@@ -1,8 +1,7 @@
 #pragma once
 
-#include <Engine/Assets/AssetType.hpp>
-
 #include <filesystem>
+#include <typeindex>
 
 namespace Engine
 {
@@ -10,6 +9,6 @@ namespace Engine
     struct AssetInfo
     {
         std::filesystem::path path;
-        AssetType type;
+        std::type_index type{typeid(void)};
     };
 }

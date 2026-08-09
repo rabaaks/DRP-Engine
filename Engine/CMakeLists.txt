@@ -10,5 +10,5 @@ target_sources(Engine PRIVATE
     Window/SDLWindow.cpp
 )
 
-target_link_libraries(Engine PUBLIC SDL3::SDL3)
+target_link_libraries(Engine PUBLIC SDL3::SDL3 SDL3_image::SDL3_image)
 target_link_libraries(Engine PUBLIC nlohmann_json::nlohmann_json)
