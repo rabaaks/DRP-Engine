@@ -30,6 +30,12 @@ namespace Engine
     }
 
     template <std::size_t N>
+    float Vector<N>::operator[](std::size_t index) const
+    {
+        return this->data[index];
+    }
+
+    template <std::size_t N>
     Vector<N> Vector<N>::operator+(const Vector<N>& other) const
     {
         Vector<N> result;

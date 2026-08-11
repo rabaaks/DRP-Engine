@@ -3,7 +3,10 @@
 #include <cstddef>
 #include <vector>
 
-struct Triangle
+namespace Engine
 {
-    std::vector<std::size_t> indices;
-};
+    struct Triangle
+    {
+        std::vector<std::size_t> indices;
+    };
+}

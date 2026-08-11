@@ -10,6 +10,7 @@ namespace Engine
     class Image
     {
     public:
+        Image() = default;
         Image(int width, int height);
 
         int GetWidth() const;

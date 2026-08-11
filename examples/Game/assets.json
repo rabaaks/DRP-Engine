@@ -1,7 +1,8 @@
 [
     {
         "id": 0,
-        "path": "models/object.stl",
+        "path": "models/object.model",
+        "sourcePath": "object.stl",
         "type": "model"
     }
 ]

@@ -1,4 +1,5 @@
 #include <Engine/Assets/AssetManager.hpp>
+#include <Engine/Assets/Serialization.hpp>
 #include <Engine/Graphics/Image.hpp>
 #include <Engine/Graphics/Model.hpp>
 #include <Engine/Scene/Entity.hpp>
@@ -19,19 +20,11 @@ namespace Engine
                 {".png", imageLoader},
                 {".jpg", imageLoader}
             }
-        },
-        assetTypes
-        {
-            {
-                {"entity", typeid(Entity)},
-                {"scene", typeid(Scene)},
-                {"script", typeid(void)},
-                {"model", typeid(Model)},
-                {"image", typeid(Image)},
-                {"sound", typeid(void)}
-            }
         }
     {
+        AddType<Image>("image");
+        AddType<Mesh>("mesh");
+
         nlohmann::json configJson(nlohmann::json::parse(configFile));
         for (nlohmann::json asset : configJson)
         {

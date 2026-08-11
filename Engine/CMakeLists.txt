@@ -1,6 +1,7 @@
 target_sources(Engine PRIVATE
     Assets/AssetManager.cpp
     Assets/ImageLoader.cpp
+    Assets/Serialization.cpp
 
     Core/Time.cpp
 
