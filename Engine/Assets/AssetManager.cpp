@@ -16,14 +16,13 @@ namespace Engine
         configFile{projectRootPath / "assets.json"},
         fileExtensions
         {
-            {
-                {".png", imageLoader},
-                {".jpg", imageLoader}
-            }
+            {".png", imageLoader},
+            {".jpg", imageLoader},
+            {".stl", modelLoader}
         }
     {
         AddType<Image>("image");
-        AddType<Mesh>("mesh");
+        AddType<Model>("model");
 
         nlohmann::json configJson(nlohmann::json::parse(configFile));
         for (nlohmann::json asset : configJson)

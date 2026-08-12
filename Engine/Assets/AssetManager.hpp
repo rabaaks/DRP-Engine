@@ -2,8 +2,9 @@
 
 #include <Engine/Assets/Asset.hpp>
 #include <Engine/Assets/AssetInfo.hpp>
-#include <Engine/Assets/ImageLoader.hpp>
 #include <Engine/Assets/FileLoader.hpp>
+#include <Engine/Assets/ImageLoader.hpp>
+#include <Engine/Assets/ModelLoader.hpp>
 
 #include <nlohmann/json.hpp>
 
@@ -39,6 +40,7 @@ namespace Engine
         std::fstream configFile;
 
         ImageLoader imageLoader;
+        ModelLoader modelLoader;
 
         std::unordered_map<std::filesystem::path, std::reference_wrapper<FileLoader>> fileExtensions;
         std::unordered_map<std::string, std::type_index> assetTypes;

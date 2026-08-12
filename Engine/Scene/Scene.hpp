@@ -4,9 +4,6 @@ namespace Engine
 {
     class Scene
     {
-        Scene()
-        {
-            
-        }
+
     };
 }

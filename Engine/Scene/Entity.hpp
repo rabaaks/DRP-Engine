@@ -1,12 +1,14 @@
 #pragma once
 
+#include <unordered_map>
+#include <string>
+
 namespace Engine
 {
     class Entity
     {
-        Entity()
-        {
-
-        }
+    private:
+        std::string name;
+        std::unordered_map<
     };
 }
