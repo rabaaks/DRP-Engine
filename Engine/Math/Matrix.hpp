@@ -15,6 +15,8 @@ namespace Engine
 
         template <std::size_t P>
         Matrix<M, P> operator*(const Matrix<N, P>& other) const;
+
+        Vector<M> operator*(const Vector<N>& vector) const;
     };
 }
 

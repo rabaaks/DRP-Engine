@@ -10,12 +10,14 @@ target_sources(Engine PRIVATE
     Graphics/Image.cpp
     Graphics/SoftwareRenderer.cpp
     Graphics/SoftwareTexture.cpp
+    Graphics/Transform.cpp
 
     Scene/ComponentManager.cpp
     Scene/Entity.cpp
     Scene/Scene.cpp
     
     Scripting/DynamicLibrary.cpp
+    Scripting/ScriptLibrary.cpp
 
     Window/SDLWindow.cpp
 )

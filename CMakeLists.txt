@@ -20,3 +20,7 @@ add_subdirectory(Runtime)
 add_executable(Editor)
 target_include_directories(Editor PRIVATE .)
 add_subdirectory(Editor)
+
+add_library(Scripts SHARED)
+target_include_directories(Scripts PRIVATE .)
+add_subdirectory(examples/Game/scripts)

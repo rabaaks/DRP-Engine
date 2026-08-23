@@ -23,6 +23,8 @@ namespace Engine
         void ShowFrame() override;
     
     private:
+        void DrawLine(Vector<2> from, Vector<2> to);
+
         Image image;
 
         const SDLWindow& window;

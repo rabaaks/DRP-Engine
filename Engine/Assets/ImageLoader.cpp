@@ -21,10 +21,11 @@ namespace Engine
         std::size_t rowSize = surface->w * sizeof(Color);
         for (int y{}; y < surface->h; ++y)
         {
+            // surface->pitch is a byte offset
             std::memcpy
             (
-                pixelsPtr + y * rowSize,
-                static_cast<Color*>(surface->pixels) + y * surface->pitch,
+                pixelsPtr + y * surface->w,
+                static_cast<std::byte*>(surface->pixels) + y * surface->pitch,
                 rowSize
             );
         }
