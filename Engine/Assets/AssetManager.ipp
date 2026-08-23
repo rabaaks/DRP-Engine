@@ -12,7 +12,7 @@ namespace Engine
         std::ifstream assetFile{assetInfo.path};
         nlohmann::json assetJson(nlohmann::json::parse(assetFile));
         // The deserializer creates the shared_ptr
-        T* objectPtr{std::static_pointer_cast<T>(deserializers.at(assetInfo.type)(assetJson))};
+        std::shared_ptr<T> objectPtr{std::static_pointer_cast<T>(deserializers.at(assetInfo.type)(assetJson))};
         cachedAssets[asset.id] = objectPtr;
         return *objectPtr;
     }
