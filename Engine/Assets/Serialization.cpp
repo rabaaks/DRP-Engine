@@ -61,6 +61,20 @@ namespace Engine
         triangle.indices = triangleJson.get<std::vector<std::size_t>>();
     }
 
+    void to_json(nlohmann::json& transformJson, const Transform& transform)
+    {
+        transformJson["position"] = transform.position;
+        transformJson["rotation"] = transform.rotation;
+        transformJson["scale"] = transform.scale;
+    }
+
+    void from_json(const nlohmann::json& transformJson, Transform& transform)
+    {
+        transform.position = transformJson.at("position").get<Vector<3>>();
+        transform.rotation = transformJson.at("rotation").get<Vector<3>>();
+        transform.scale = transformJson.at("scale").get<Vector<3>>();
+    }
+
     void to_json(nlohmann::json& meshJson, const Mesh& mesh)
     {
         // Add material later
@@ -81,6 +95,60 @@ namespace Engine
 
     void from_json(const nlohmann::json& modelJson, Model& model)
     {
-        model.meshes = modelJson.at("meshes");
+        model.meshes = modelJson.at("meshes").get<std::vector<Mesh>>();
+    }
+
+    void to_json(nlohmann::json& entityJson, const Entity& entity, ComponentManager& componentManager)
+    {
+        entityJson["name"] = entity.GetName();
+        entityJson["scripts"] = entity.GetScriptNames();
+
+        entityJson["components"] = nlohmann::json::object();
+        for (auto& [typeName, component] : entity.GetComponents())
+        {
+            entityJson["components"][typeName] = componentManager.ToJson(typeName, component.get());
+        }
+    }
+
+    void from_json(const nlohmann::json& entityJson, Entity& entity, ComponentManager& componentManager)
+    {
+        entity.SetName(entityJson.at("name"));
+
+        for (const std::string& name : entityJson.at("scripts"))
+        {
+            entity.AddScriptName(name);
+        }
+
+        for (auto& [typeName, componentJson] : entityJson.at("components").items())
+        {
+            std::shared_ptr<void> component{componentManager.Create(typeName)};
+            componentManager.FromJson(typeName, component.get(), componentJson);
+            entity.AddComponent(typeName, component);
+        }
+    }
+
+    void to_json(nlohmann::json& sceneJson, const Scene& scene)
+    {
+        // Only serialize the entity assets
+        sceneJson["entities"] = scene.GetEntityAssets();
+    }
+
+    void from_json(const nlohmann::json& sceneJson, Scene& scene)
+    {
+        for (const Asset<Entity>& entityAsset : sceneJson.at("entities").get<std::vector<Asset<Entity>>>())
+        {
+            scene.AddEntityAsset(entityAsset);
+        }
+    }
+
+    void to_json(nlohmann::json& meshRendererJson, const MeshRenderer& meshRenderer)
+    {
+        // Uses the generic to_json
+        meshRendererJson["model"] = meshRenderer.model;
+    }
+
+    void from_json(const nlohmann::json& meshRendererJson, MeshRenderer& meshRenderer)
+    {
+        meshRenderer.model = meshRendererJson.at("model").get<Asset<Model>>();
     }
 }

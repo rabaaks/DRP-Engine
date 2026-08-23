@@ -18,6 +18,7 @@ namespace Engine
         
         template <typename T>
         T* GetComponent(const std::string& name);
+        
 
         void AddComponent(const std::string& name, std::shared_ptr<void> component);
         const std::unordered_map<std::string, std::shared_ptr<void>>& GetComponents() const;

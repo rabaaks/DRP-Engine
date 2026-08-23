@@ -1,5 +1,6 @@
 #pragma once
 
+#include <Engine/Core/Input.hpp>
 #include <Engine/Graphics/Image.hpp>
 #include <Engine/Window/Window.hpp>
 
@@ -24,10 +25,14 @@ namespace Engine
 
         void Display(const Image& image) const;
 
+        const Input& GetInput() const;
+
     private:
         SDL_Window* window;
         SDL_Renderer* renderer;
         SDL_Texture* texture;
+
+        Input input;
 
         bool closed{false};
 

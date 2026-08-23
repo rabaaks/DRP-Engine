@@ -11,6 +11,7 @@ target_sources(Engine PRIVATE
     Graphics/SoftwareTexture.cpp
 
     Scene/ComponentManager.cpp
+    Scene/Entity.cpp
 
     Window/SDLWindow.cpp
 )

@@ -39,6 +39,14 @@ namespace Engine
             {
                 closed = true;
             }
+            else if (event.type == SDL_EVENT_KEY_DOWN)
+            {
+                input.KeyDown(event.key.scancode);
+            }
+            else if (event.type == SDL_EVENT_KEY_UP)
+            {
+                input.KeyUp(event.key.scancode);
+            }
         }
     }
 
@@ -74,5 +82,10 @@ namespace Engine
             nullptr
         );
         SDL_RenderPresent(renderer);
+    }
+
+    const Input& SDLWindow::GetInput() const
+    {
+        return input;
     }
 }
