@@ -7,6 +7,7 @@
 
 namespace Engine
 {
+    // Separate struct for the create function
     struct ComponentInfo
     {
         std::function<std::shared_ptr<void>()> create;

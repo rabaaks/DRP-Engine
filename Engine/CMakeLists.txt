@@ -10,6 +10,8 @@ target_sources(Engine PRIVATE
     Graphics/SoftwareRenderer.cpp
     Graphics/SoftwareTexture.cpp
 
+    Scene/ComponentManager.cpp
+
     Window/SDLWindow.cpp
 )
 
