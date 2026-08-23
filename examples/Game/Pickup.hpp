@@ -16,6 +16,6 @@ namespace Runtime
 
     void from_json(const nlohmann::json& pickupJson, Pickup& pickup)
     {
-        pickup.collected = pickupJson.value()
+        pickup.collected = pickupJson.value("collected", false);
     }
 }

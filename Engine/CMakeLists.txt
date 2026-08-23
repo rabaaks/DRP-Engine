@@ -13,7 +13,7 @@ target_sources(Engine PRIVATE
 
     Scene/ComponentManager.cpp
     Scene/Entity.cpp
-    Scene/Scene.
+    Scene/Scene.cpp
     
     Scripting/DynamicLibrary.cpp
 
