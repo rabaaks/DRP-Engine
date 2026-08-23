@@ -7,6 +7,7 @@
 #include <Engine/Assets/ModelLoader.hpp>
 
 #include <Engine/Scene/ComponentManager.hpp>
+#include <Engine/Scene/Entity.hpp>
 
 #include <nlohmann/json.hpp>
 
@@ -34,6 +35,12 @@ namespace Engine
 
         template <typename T>
         Asset<T> Import(std::filesystem::path path);
+
+        template <typename T>
+        void AddComponent(const std::string& name);
+
+        template <typename T>
+        T Clone(const T& entity);
     
     private:
         std::uint64_t nextId;

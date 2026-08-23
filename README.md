@@ -1,5 +1,5 @@
 # DRP Engine
-DRP Engine is a game engine based on a software renderer, mainly for me to become more familiar with graphics.
+DRP Engine is a game engine, mainly for me to become more familiar with graphics and larger C++ projects. Unlike a standard game engine, it uses a software renderer, again because it was something I wanted to learn about.
 
 ## Project layout
 
@@ -10,3 +10,6 @@ DRP Engine is a game engine based on a software renderer, mainly for me to becom
 
 ## Architecture
 Game scenes consist of entities, which consist of purely data components, and user-defined scripts. Systems are created globally and act on certain components.
+
+## Demo game
+Use the github pages link to play the game in the browser. Alternatively, download the project files and modify the game project files in /examples/Game/

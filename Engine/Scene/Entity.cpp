@@ -2,6 +2,11 @@
 
 namespace Engine
 {
+    std::uint64_t Entity::GetId() const
+    {
+        return id;
+    }
+
     const std::string& Entity::GetName() const
     {
         return name;
@@ -30,5 +35,10 @@ namespace Engine
     const std::unordered_map<std::string, std::shared_ptr<void>>& Entity::GetComponents() const
     {
         return components;
+    }
+
+    Scene* Entity::GetScene() const
+    {
+        return scene;
     }
 }

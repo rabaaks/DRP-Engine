@@ -51,4 +51,17 @@ namespace Engine
             return std::make_shared<T>(objectJson.get<T>());
         };
     }
+
+    template <typename T>
+    void AddComponent(const std::string& name)
+    {
+        componentManager.AddComponent<T>(name);
+    }
+
+    template <typename T>
+    T AssetManager::Clone(const T& object)
+    {
+        nlohmann::json objectJson{serializers.at(typeid(T))(const_cast<T*>(&object))};
+        return *std::static_pointer_cast<T>(deserializers.at(typeid(T))(objectJson));
+    }
 }

@@ -4,6 +4,7 @@ target_sources(Engine PRIVATE
     Assets/ModelLoader.cpp
     Assets/Serialization.cpp
 
+    Core/Input.cpp
     Core/Time.cpp
 
     Graphics/Image.cpp
@@ -12,6 +13,9 @@ target_sources(Engine PRIVATE
 
     Scene/ComponentManager.cpp
     Scene/Entity.cpp
+    Scene/Scene.
+    
+    Scripting/DynamicLibrary.cpp
 
     Window/SDLWindow.cpp
 )

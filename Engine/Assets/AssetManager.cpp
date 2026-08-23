@@ -27,6 +27,7 @@ namespace Engine
     {
         AddType<Image>("image");
         AddType<Model>("model");
+        AddType<Scene>("scene");
 
         // Serialization methods for Entity requires the componentManager
         assetTypes.emplace("Entity", typeid(Entity));
