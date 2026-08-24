@@ -58,6 +58,7 @@ public:
             if (diff.Dot(diff) > pickupRadius * pickupRadius) continue;
 
             pickup->collected = true;
+            entity.GetScene()->DestroyEntity(other.GetId());
             collectedCount++;
             std::cout << "Collected " << collectedCount << " / " << totalPickups << std::endl;
 
