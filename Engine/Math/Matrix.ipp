@@ -9,6 +9,12 @@ namespace Engine
     }
 
     template <std::size_t M, std::size_t N>
+    const Vector<N>& Matrix<M, N>::operator[](std::size_t index) const
+    {
+        return data[index];
+    }
+
+    template <std::size_t M, std::size_t N>
     template <std::size_t P>
     Matrix<M, P> Matrix<M, N>::operator*(const Matrix<N, P>& other) const
     {

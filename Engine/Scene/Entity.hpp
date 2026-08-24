@@ -32,12 +32,12 @@ namespace Engine
         Scene* GetScene() const;
         
     private:
-        std::uint64_t id;
+        std::uint64_t id{};
         std::string name;
         std::unordered_map<std::string, std::shared_ptr<void>> components;
         std::vector<std::string> scriptNames;
 
-        Scene* scene;
+        Scene* scene{nullptr};
         // Only owned by the entity
         std::vector<std::unique_ptr<Script, void(*)(Script*)>> scripts;
 

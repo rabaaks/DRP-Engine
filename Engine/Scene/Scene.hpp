@@ -27,6 +27,6 @@ namespace Engine
         std::vector<Entity> entities;
         std::vector<std::uint64_t> destroyQueue;
 
-        std::uint64_t nextEntityId;
+        std::uint64_t nextEntityId{};
     };
 }

@@ -9,7 +9,7 @@ namespace Engine
         if (cachedAssets.contains(asset.id)) return *std::static_pointer_cast<T>(cachedAssets[asset.id]);
     
         const AssetInfo& assetInfo{assets.at(asset.id)};
-        std::ifstream assetFile{assetInfo.path};
+        std::ifstream assetFile{projectRootPath / assetInfo.path};
         nlohmann::json assetJson(nlohmann::json::parse(assetFile));
         // The deserializer creates the shared_ptr
         std::shared_ptr<T> objectPtr{std::static_pointer_cast<T>(deserializers.at(assetInfo.type)(assetJson))};
@@ -53,7 +53,7 @@ namespace Engine
     }
 
     template <typename T>
-    void AddComponent(const std::string& name)
+    void AssetManager::AddComponent(const std::string& name)
     {
         componentManager.AddComponent<T>(name);
     }
@@ -61,7 +61,8 @@ namespace Engine
     template <typename T>
     T AssetManager::Clone(const T& object)
     {
-        nlohmann::json objectJson{serializers.at(typeid(T))(const_cast<T*>(&object))};
-        return *std::static_pointer_cast<T>(deserializers.at(typeid(T))(objectJson));
+        nlohmann::json objectJson(serializers.at(typeid(T))(const_cast<T*>(&object)));
+        // Move rather than copy the deserialized object out
+        return std::move(*std::static_pointer_cast<T>(deserializers.at(typeid(T))(objectJson)));
     }
 }

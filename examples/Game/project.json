@@ -2,6 +2,6 @@
     "name": "Test Game",
     "width": 1280,
     "height": 720,
-    "scriptModules": ["Scripts.dll"],
+    "scriptModules": ["GameScripts.dll"],
     "startScene": 5
 }

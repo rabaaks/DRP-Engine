@@ -1,0 +1,8 @@
+{
+    "name": "Player",
+    "scripts": ["PlayerController"],
+    "components": {
+        "Transform": { "position": [0.0, 0.0, 0.0], "rotation": [0.0, 0.0, 0.0], "scale": [1.0, 1.0, 1.0] },
+        "MeshRenderer": { "model": 0 }
+    }
+}

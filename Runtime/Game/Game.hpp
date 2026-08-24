@@ -2,7 +2,11 @@
 
 #include <Engine/Assets/AssetManager.hpp>
 #include <Engine/Core/Time.hpp>
+#include <Engine/Graphics/Camera.hpp>
+#include <Engine/Graphics/MeshRenderer.hpp>
 #include <Engine/Graphics/SoftwareRenderer.hpp>
+#include <Engine/Scene/Scene.hpp>
+#include <Engine/Scripting/ScriptLibrary.hpp>
 #include <Engine/Window/SDLWindow.hpp>
 
 #include <filesystem>
@@ -27,6 +31,10 @@ namespace Runtime
         Engine::AssetManager assetManager;
         Engine::SDLWindow window;
         Engine::SoftwareRenderer renderer;
+        Engine::ScriptLibrary scriptLibrary;
+
+        Engine::Camera camera;
+        Engine::Scene scene;
 
         void Update(float deltaTime);
         void Render();

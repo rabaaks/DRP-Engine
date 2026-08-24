@@ -7,7 +7,7 @@
 
 namespace Engine
 {
-    void ScriptLibrary::LoadModule(std::filesystem::path path)
+    void ScriptLibrary::LoadModule(std::filesystem::path path, ComponentManager& componentManager)
     {
         modules.push_back(std::make_unique<DynamicLibrary>(path));
         DynamicLibrary& library{*modules.back()};
@@ -25,6 +25,11 @@ namespace Engine
 
             scriptTypes[scriptName] = ScriptInfo{create, destroy};
         }
+
+        // Optional - a module registers its own component types here so Runtime never
+        // needs compile-time knowledge of any game-specific component
+        void (*registerComponents)(ComponentManager&){reinterpret_cast<void (*)(ComponentManager&)>(library.GetSymbol("RegisterComponents"))};
+        if (registerComponents) registerComponents(componentManager);
     }
 
     std::unique_ptr<Script, void(*)(Script*)> ScriptLibrary::Create(const std::string& name) const

@@ -4,5 +4,35 @@
         "path": "models/object.model",
         "sourcePath": "object.stl",
         "type": "model"
+    },
+    {
+        "id": 1,
+        "path": "entities/player.entity",
+        "sourcePath": "entities/player.entity",
+        "type": "entity"
+    },
+    {
+        "id": 2,
+        "path": "entities/pickup1.entity",
+        "sourcePath": "entities/pickup1.entity",
+        "type": "entity"
+    },
+    {
+        "id": 3,
+        "path": "entities/pickup2.entity",
+        "sourcePath": "entities/pickup2.entity",
+        "type": "entity"
+    },
+    {
+        "id": 4,
+        "path": "entities/pickup3.entity",
+        "sourcePath": "entities/pickup3.entity",
+        "type": "entity"
+    },
+    {
+        "id": 5,
+        "path": "scenes/main.scene",
+        "sourcePath": "scenes/main.scene",
+        "type": "scene"
     }
 ]

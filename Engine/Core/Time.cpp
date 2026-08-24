@@ -6,19 +6,17 @@ namespace Engine
 {
     void Time::Update()
     {
-        float currentTime
-        {
-            std::chrono::duration<float>(
-                std::chrono::high_resolution_clock::now().time_since_epoch()
-            ).count()
-        };
-        // No delta time recorded for last frame on the first frame
+        const auto currentTime{std::chrono::steady_clock::now()};
+
+        // No delta time is recorded for the first frame.
         if (firstFrame)
         {
             lastFrameTime = currentTime;
             firstFrame = false;
+            return;
         }
-        deltaTime = currentTime - lastFrameTime;
+
+        deltaTime = std::chrono::duration<float>(currentTime - lastFrameTime).count();
         lastFrameTime = currentTime;
     }
 

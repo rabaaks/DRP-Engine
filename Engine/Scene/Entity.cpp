@@ -14,7 +14,7 @@ namespace Engine
 
     void Entity::SetName(std::string name)
     {
-        name = std::move(name);
+        this->name = std::move(name);
     }
 
     void Entity::AddComponent(const std::string& name, std::shared_ptr<void> component)
@@ -40,5 +40,10 @@ namespace Engine
     Scene* Entity::GetScene() const
     {
         return scene;
+    }
+
+    std::vector<std::unique_ptr<Script, void(*)(Script*)>>& Entity::GetScripts()
+    {
+        return scripts;
     }
 }

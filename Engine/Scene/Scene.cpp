@@ -1,6 +1,7 @@
 #include <Engine/Scene/Scene.hpp>
 
 #include <Engine/Assets/AssetManager.hpp>
+#include <Engine/Scripting/Script.hpp>
 #include <Engine/Scripting/ScriptLibrary.hpp>
 
 #include <algorithm>
@@ -28,8 +29,8 @@ namespace Engine
 
             for (const std::string& scriptName : instance.GetScriptNames())
             {
-                // instance.scripts.push_back(scriptLibrary.Create(scriptName));
-                // instance.scripts.back()->OnCreate(instance);
+                instance.scripts.push_back(scriptLibrary.Create(scriptName));
+                instance.scripts.back()->Create(instance);
             }
 
             entities.push_back(std::move(instance));

@@ -28,6 +28,9 @@ namespace Engine
         AssetManager(std::filesystem::path projectRootPath);
         ~AssetManager();
 
+        AssetManager(AssetManager&&) = default;
+        AssetManager& operator=(AssetManager&&) = default;
+
         void Save();
 
         template <typename T>
@@ -39,11 +42,14 @@ namespace Engine
         template <typename T>
         void AddComponent(const std::string& name);
 
+        ComponentManager& GetComponentManager();
+
         template <typename T>
         T Clone(const T& entity);
     
     private:
-        std::uint64_t nextId;
+        std::filesystem::path projectRootPath;
+        std::uint64_t nextId{};
         std::unordered_map<std::uint64_t, AssetInfo> assets;
         std::unordered_map<std::uint64_t, std::shared_ptr<void>> cachedAssets; 
         std::fstream configFile;

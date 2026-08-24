@@ -1,5 +1,7 @@
 #pragma once
 
+#include <chrono>
+
 namespace Engine
 {
     class Time
@@ -11,7 +13,7 @@ namespace Engine
     
     private:
         float deltaTime{0.0f};
-        float lastFrameTime{0.0f};
+        std::chrono::steady_clock::time_point lastFrameTime;
         bool firstFrame{true};
     };
 }

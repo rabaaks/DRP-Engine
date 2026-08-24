@@ -11,13 +11,14 @@
 
 #include <nlohmann/json.hpp>
 
-#include <iostream>
+#include <algorithm>
 #include <utility>
 
 namespace Engine
 {
     AssetManager::AssetManager(std::filesystem::path projectRootPath) :
-        configFile{projectRootPath / "assets.json"},
+        projectRootPath{std::move(projectRootPath)},
+        configFile{this->projectRootPath / "assets.json"},
         fileExtensions
         {
             {".png", imageLoader},
@@ -30,7 +31,7 @@ namespace Engine
         AddType<Scene>("scene");
 
         // Serialization methods for Entity requires the componentManager
-        assetTypes.emplace("Entity", typeid(Entity));
+        assetTypes.emplace("entity", typeid(Entity));
         assetNames.emplace(typeid(Entity), "entity");
 
         serializers[typeid(Entity)] = 
@@ -55,20 +56,27 @@ namespace Engine
         nlohmann::json configJson(nlohmann::json::parse(configFile));
         for (nlohmann::json asset : configJson)
         {
-            assets[asset["id"].get<std::uint64_t>()] = 
+            std::uint64_t id{asset["id"].get<std::uint64_t>()};
+            assets[id] = 
             AssetInfo
             {
                 asset["path"].get<std::string>(),
                 asset["sourcePath"].get<std::string>(),
                 assetTypes.at(asset["type"].get<std::string>())
             };
-            std::cout << asset["id"] << std::endl << asset["path"] << asset["type"];
+            // Keep newly Import()'d assets from colliding with ids already used in assets.json
+            nextId = std::max(nextId, id + 1);
         }
     }
 
     AssetManager::~AssetManager()
     {
         Save();
+    }
+
+    ComponentManager& AssetManager::GetComponentManager()
+    {
+        return componentManager;
     }
 
     void AssetManager::Save()

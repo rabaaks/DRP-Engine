@@ -67,6 +67,10 @@ namespace Engine
 
     void SDLWindow::Display(const Image& image) const
     {
+        // Clear the buffer
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        SDL_RenderClear(renderer);
+
         SDL_UpdateTexture
         (
             texture,

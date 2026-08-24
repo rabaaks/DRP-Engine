@@ -3,6 +3,7 @@
 #include <Engine/Scene/ComponentInfo.hpp>
 
 #include <string>
+#include <unordered_map>
 
 namespace Engine
 {
